@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <title>LearnAdda</title>
+</head>
+<body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+
+                    <a class="navbar-brand" href="#"><span style="padding : 5px"><i class="fas fa-graduation-cap">
+                    </i></span>Learn Adda</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="#by-numbers">About Us</a></li>
+                    <li><a href="#contact-us">Contact</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                        <% if(req.session.user) { %>
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> 
+                                <%= req.session.user.name %></a></li>
+                            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                            <% } else { %>
+                    <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <%  } %>
+                  </ul>
+                </div>
+              </nav>
+    <section id="course">
+        <div class="container">
+                <div class="heading">
+                    <h1>Material</h1>
+                </div>
+                <h2 style="margin-left : 40px">Upload</h2>
+                <form id="frmUploader" enctype="multipart/form-data" action="upload/" method="post">
+                    <input type="file" style="padding : 10px;margin:10px" name="imgUploader" multiple />
+                    <input style="padding : 10px;margin:10px;margin-left : 70px;" type="submit" name="submit" id="btnSubmit" value="Upload" /> </form>
+                <h2 style="margin-left : 40px">Download</h2>
+                <form action="/download" method="POST">
+                    <input style="padding : 10px;margin:10px" type="text" name="file" required placeholder="Enter file name">
+                    <button style="padding : 10px;margin:10px;margin-left : 50px" type="submit">Download File</button>
+                </form>
+        </div>
+    </section>
+    <section id="main">
+        <div class="main-container">
+            
+        </div>
+    </section>
+    <div class="welcome-container">
+
+    </div>
+    <section id="quiz">
+        <div class="container">
+            <div class="heading">
+                <h1>Quiz</h1>
+            </div>
+            <div class="quiz-enrolled">
+
+            </div>
+            <% if(req.session.user) { %>
+                <% if(req.session.user.person == 'teacher') { %>
+                    <div class="teacher-list">
+                        <button type="button" onclick="getQuizList()">
+                            <span>Get Quiz list</span>
+                        </button>
+                    </div>
+                <% } %>
+            <% } %>
+            <% if(req.session.user) { %>
+                <% if(req.session.user.person == 'student') { %>
+            <button onclick="addQuiz()">
+                <span>Join a Quiz</span>
+            </button>
+            <% } %>
+            <% } %>
+            <% if(req.session.user) { %>
+                <% if(req.session.user.person == 'teacher') { %>                
+                    <form action="/quiz/create" method="GET">
+                        <button type="submit">Create quiz</button>
+                    </form>
+                <% } %>
+            <% } %>
+        </div>
+    </section>
+    <section id="by-numbers">
+            <div class="container">
+                <h1>About Us</h1>
+                <div class="facts-container">
+                    <div class="fact">
+                        <div class="fact-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="fact-text">
+                            <h4>30000+ Students</h4>
+                        </div>
+                    </div>
+                    <div class="fact">
+                        <div class="fact-icon">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <div class="fact-text">
+                            <h4>100% Availability</h4>
+                        </div>
+                    </div>
+                    <div class="fact">
+                        <div class="fact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="fact-text">
+                            <h4>24/7 Customer support</h4>
+                        </div>
+                    </div>
+                    <div class="fact">
+                        <div class="fact-icon">
+                            <i class="far fa-smile"></i>
+                        </div>
+                        <div class="fact-text">
+                            <h4>90+ Happy Colleges</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact-form">
+
+<div class="container" id="contact-us">
+        <div class="col-md-5">
+            <div class="form-area">  
+                <form role="form" action="/formdata" method="POST">
+                <br style="clear:both">
+                    <h2 style="margin-bottom: 25px; text-align: center;">Contact Form</h2>
+                    <div class="form-group">
+                        <input type="text" style="font-size : 20px;" class="form-control" id="name" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" style="font-size : 20px;" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" style="font-size : 20px;" class="form-control" id="mobile" name="mobile" placeholder="Mobile Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" style="font-size : 20px;" class="form-control" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                    <textarea class="form-control" style="font-size : 20px;" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+                    </div>
+            
+                <button type="submit" id="submit" onsubmit="alert('Received Form Data')" name="submit" class="btn btn-primary pull-right">Submit Form</button>
+                </form>
+            </div>
+        </div>
+        </div>
+        </section>
+    <script>
+
+        const getQuizList = () => {
+            fetch('/quiz/teacherQuiz')
+            .then(result => result.json())
+            .then(result => {
+                console.log(result);
+                document.querySelector('.teacher-list').innerHTML = "";
+                result.forEach(cur => {
+                    var str = '<div style="margin-left : 120px;"><p style="font-size:20px"><a href="/quiz/getListOfStudents/?q=' + cur.quiz_id + '">' + cur.quiz_name + '</a></p></div>';
+                    document.querySelector('.teacher-list').insertAdjacentHTML('beforeend',str);
+                })
+            })
+            .catch(err => {
+                console.log(err);
+                res.send("Error")
+            })
+        }
+
+        const addQuiz = () => {
+            const el = `
+            <div id="add-quiz" style=" background-color : rgba(40,40,40,1);color : white;z-index : 11;border-radius:10px">
+                <h1>Join a Quiz ! </h1>
+                <div>
+                    <form action="/quiz/access" method="POST">
+                        <span>Enter the Course Code : </span>
+                        <input type="text" name="ccode" required style="color : black;border-radius : 5px">
+                        <button type="submit" style="margin-left : 60px;color : black;border-radius : 5px">Add Quiz</button>
+                    </form>
+                </div>
+            </div>
+            `;
+            document.querySelector('.main-container').style.backgroundImage = "url('images/white.jpg')";
+            document.querySelector('.main-container').insertAdjacentHTML('afterbegin',el);
+        }
+
+        window.onload = function(){
+            fetch('/quiz/getDetails')
+            .then(result => 
+            {
+                console.log(result);
+                return result.json();
+            })
+            .then((result) => {
+                result.forEach((cur) => {
+                    console.log(cur);
+                    console.log(cur.quiz)
+                    var eachTakenQuiz = '<div class="each-question"><p>Quiz Name ' +'<a href="/quiz/retake?q=' + cur.quiz +'&retake=true">' +cur.quiz + '</a>' + '</p><p>Marks ' + cur.score + '/' + cur.total + '</p></div>';
+                    console.log(eachTakenQuiz);
+                    console.log();
+                    document.querySelector('.quiz-enrolled').insertAdjacentHTML('beforeend',eachTakenQuiz);
+                })
+            })
+            .catch(err => {
+                console.log(err);                  
+            })
+        }
+        
+    $(document).ready(function() {
+        var options = {
+                beforeSubmit: showRequest
+         }}) // pre-submit callback success: showResponse // post-submit callback }; // bind to the form's submit event $('#frmUploader').submit(function () { $(this).ajaxSubmit(options); // always return false to prevent standard browser submit and page navigation return false; }); }); // pre-submit callback function showRequest(formData, jqForm, options) { alert('Uploading is starting.'); return true; } // post-submit callback function showResponse(responseText, statusText, xhr, $form) { alert('status: ' + statusText + '\n\nresponseText: \n' + responseText ); }
+    </script>
+</body>
+</html>

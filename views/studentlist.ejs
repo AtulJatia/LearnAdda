@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student List</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+    
+                    <a class="navbar-brand" href="#"><span style="padding : 5px"><i class="fas fa-graduation-cap">
+                    </i></span>Learn Adda</a>
+                  </div>
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/#by-numbers">About Us</a></li>
+                    <li><a href="/#contact-us">Contact</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> 
+                            <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                  </ul>
+                </div>
+              </nav>
+    <div class="student-list" style="margin-top : 80px">
+        <h1>Students Taken the Quiz</h1>
+        <% for(i=0;i<obj.length;i++)  { %>
+            <div class="each-student">
+                <p>Student Name : <%= obj[i].name %></p>
+                <p>Marks : <%= obj[i].score.score %> / <%= obj[i].score.total %></p>
+            </div>   
+        <% } %>
+    </div>
+</body>
+</html>

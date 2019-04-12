@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Quiz</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+
+                <a class="navbar-brand" href="#"><span style="padding : 5px"><i class="fas fa-graduation-cap">
+                </i></span>Learn Adda</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/#by-numbers">About Us</a></li>
+                <li><a href="/#contact-us">Contact</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> 
+                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+              </ul>
+            </div>
+          </nav>
+    <div class="create-container">
+        <div class="heading">
+            <h1 style="margin : 10px;margin-top:80px;">Create a Quiz</h1>
+        </div>
+        <form action="/quiz/create" method="POST">
+            <div class="quiz-code">
+                <span style="padding : 10px;margin: 10px">Quiz Code : </span>
+            <input style="padding : 10px;margin: 10px" type="text" name="t" required>
+            </div>
+            <div class="quiz-name">
+                <span style="padding : 10px;margin: 10px">Quiz Name : </span>
+                <input style="padding : 10px;margin: 10px" type="text" name="n" required>
+            </div>
+            <div class="questions">
+
+            </div>
+            <button style="margin-left : 50px;padding : 10px;margin-top : 20px;" class="btn-primary" type="button" onclick="addQues()">Add a Question</button>
+            <button style="margin-left : 10px;padding :10px;margin-top : 20px;"  class="btn-primary" type="submit">Create Quiz</button>
+        </form>
+    </div>
+    <script>
+        var ctr = 0;
+        addQues = () => {
+            const el = `
+            <div class="each-question">
+                    <div class="question">
+                        <span style="padding : 10px;margin: 13px">Question : </span>
+                        <input style="padding : 13px;margin: 13px" type="text" name="q${ctr}">
+                        <div class="options">
+                        <div class="option">
+                            <span style="padding : 13px;margin: 13px">
+                            Option A :
+                            </span>
+                            <input style="padding : 13px;margin: 13px" type="text" name="a${ctr}">
+                        </div>
+                        <div class="option">
+                            <span style="padding : 13px;margin: 13px">
+                            Option B :
+                            </span>
+                            <input style="padding : 13px;margin: 13px" type="text" name="b${ctr}">
+                        </div>
+                        <div class="option">
+                            <span style="padding : 13px;margin: 13px">
+                            Option C :
+                            </span>
+                            <input style="padding : 13px;margin: 13px" type="text" name="c${ctr}">
+                        </div>
+                        <div class="option">
+                            <span style="padding : 13px;margin: 13px">
+                            Option D :
+                            </span>
+                            <input style="padding : 13px;margin: 13px" type="text" name="d${ctr}">
+                        </div>
+                    </div>
+                    <div class="correct-ans">
+                        <span style="padding : 5px;margin: 5px">Correct Answer(A-D) : </span>
+                        <input style="padding : 5px;margin: 5px" type="text" name="o${ctr}">
+                    </div>
+                    </div>
+                </div>
+            `;
+            document.querySelector('.questions').insertAdjacentHTML('beforeend',el);
+            ctr++;
+        }
+
+    </script>
+</body>
+</html>

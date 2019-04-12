@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sign Up Page</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100 " style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-30 p-b-33 center-12">
+				<form class="login100-form validate-form flex-sb flex-w" action="/register" method="POST">
+					<span class="login100-form-title p-b-53 regClass">
+						Sign Up
+					</span>
+					
+					<div class="error-mes">
+						<%= message %>
+					</div>
+					<div class="person">
+						<div class="each-person">
+							<input type="radio" name="person" value="student" id="student"> 
+							<label for="student" class="txt1">
+								<span class="fs-20">Student</span>
+							</label> 
+						</div>
+						<div class="each-person">
+							<input type="radio" name="person" value="teacher" id="teacher">
+							<label for="teacher" class="txt1">
+								<span class="fs-20">Teacher</span>
+							</label>
+						</div>
+					</div>
+					<div class="p-t-1 p-b-9">
+						<span id="user1" class="txt1 fs-20">
+							Username
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Username is required">
+						<input class="input100" type="text" name="name" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-13 p-b-9">
+						<span class="txt1 fs-20">
+							Password
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-13 p-b-9">
+						<span class="txt1 fs-20">
+							Confirm Password
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="cnfpassword" >
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-13 p-b-9">
+						<span class="txt1 fs-50">
+							Email
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Email is required">
+						<input class="input100" type="email" name="email">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<div id="signup">
+							<button class="login100-form-btn">
+									<span class="fs-20">Register</span>
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<script src="js/main.js"></script>
+	<button 
+</body>
+</html>

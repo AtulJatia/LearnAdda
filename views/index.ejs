@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" type="text/css" href="bg.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<title>Ultrasonic blind stick</title>
+</head>
+<body >
+
+    <ul>
+            <li><a href="#Home1">Home</a></li>
+            <li><a href="#Model1">Model</a></li>
+            <li><a href="#contact">Contact</a></li>
+           <li style="float:right; margin-right: 85px"><a href="login"><%= message %></a></li>
+    </ul>
+    <br><br>
+   
+        <div class="slideshow-container">
+        <div class="myslides fade">
+        <div class="numbers">1 / 4</div>
+        <div><img src="arduinobg.jpg" style="width: 1400px; height:700px";></div>
+        <div class="caption">Arduino</div>
+    </div>
+        
+        <div class="myslides fade">
+        <div class="numbers">2 / 4</div>
+        <div><img src="images/img1.jpg" style="width: 1400px;"></div>
+        <div class="caption"></div>
+        </div>      
+        
+        <div class="myslides fade">
+        <div class="numbers">3 / 4</div>
+        <div><img src="arduinobg.jpg" style="width: 1400px;height:700px;"></div>
+        <div class="caption">Text 3</div>
+        </div>
+        
+        <div class="myslides fade">
+        <div class="numbers">4 / 4</div>
+        <div><img src="images/img3.jpg" style="width: 1400px;"></div>
+        <div class="caption">Text 4</div>
+        </div>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+        <div style="text-align:center">
+        <span class="dots" onclick="currentSlide(2)"></span> 
+        <span class="dots" onclick="currentSlide(2)"></span> 
+        <span class="dots" onclick="currentSlide(2)"></span> 
+        <span class="dots" onclick="currentSlide(2)"></span> 
+        </div>
+        
+        <script type="text/javascript">
+        var slideIndex = 1;
+        showSlide(slideIndex);        
+        
+        function plusSlides(n){
+        showSlide(slideIndex += n);
+        }
+        
+        
+        function currentSlide(n) {
+        showSlide(slideIndex = n);
+        }
+        
+        function showSlide(n){
+        var i;
+        var slides = document.getElementsByClassName("myslides");
+        var dots = document.getElementsByClassName("dots");
+        if (n > slides.length) { slideIndex = 1};
+        if (n < 1) { slideIndex = slides.length};
+        for (i=0;i<slides.length;i++) {
+        slides[i].style.display = "none";
+        };
+        
+        for (i=0;i<dots.length;i++) {
+        dots[i].className = dots[i].className.replace(" active","");
+        };
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        }
+        </script>
+        
+        <div class="container-login100-form-btn m-t-17">
+            <div class="btn-101">
+            <button class="btn123">
+                <a href="#Home1">
+                Get started
+            </a>
+            </button>
+        </div>
+    <br>
+    <br>
+    <br>       
+        <div class="container" id="Home1">  
+                <div class="column active">
+                    <div class="content">
+                        <h1>1</h1>
+                        <div class="box">
+                            <b><h2>What is the project ?</h2></b>
+                            <p>
+                                Blind stick is an innovative stick designed for visually disabled people (blind people) for improved navigation. 
+                            The project aims on providing an alternative to a traditional blind stick. 
+                            We have made an advanced blind stick which helps visually disabled people to walk comfortably on streets. 
+                            The blind stick is equipped with an ultrasonic sensor.</p>
+                        </div>
+                    </div>
+                    <div class="bg bg1"></div>
+                </div>
+                <div class="column">
+                        <div class="content">
+                            <h1>2</h1>
+                            <div class="box">
+                                <h2>What is our aim ?</h2>
+                                <p>Our project first uses ultrasonic sensors to detect obstacles ahead using ultrasonic waves. 
+                                        On sensing the obstacles, the sensor passes this data to the (Arduino). 
+                                    The microcontroller then processes this data and calculates the distance of the obstacle.</p>
+                            </div>
+                        </div>
+                        <div class="bg bg2"></div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <h1>3</h1>
+                            <div class="box">
+                                <h2>What is the purpose ?</h2>
+                                <p>The main purpose of the project is to produce a prototype that can detect obstacles in front of the users and feeds warning back, in the form vibrations and sound patterns. 
+                                    If constructed with at most accuracy, the blind people will be able to move freely from one place to another without anybody’s help. 
+                                    The prototype gives excellent results in detecting obstacles near users. .</p>
+                            </div>
+                        </div>
+                    <div class="bg bg3"></div>
+                    </div>
+                    
+                <div class="column">
+                        <div class="content">
+                            <h1>4</h1>
+                            <div class="box">
+                                <h2>How to know it works?</h2>
+                                <p>If the obstacle is not close enough then the circuit does nothing. 
+                                    If the obstacle is close to the user then the microcontroller sends the signal to sound a buzzer and the vibrator generates vibrations. 
+                                    It also detects and sounds a different buzzer if it detects human and alert the blind..</p>
+                            </div>
+                        </div>
+                        <div class="bg bg4"></div>
+                    </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+            <script type="text/javascript">
+                $(document).on('mouseover', '.container .column',function(){
+                    $(this).addClass('active').siblings().removeClass('active')
+                })
+            </script>
+
+            <br>
+            <b><u><h1 style="text-align:center;">Components</h1></u></b>
+            <br><br>
+            <div style="background-image: linear-gradient(to bottom right, rgba(176, 224, 230, 0.55), rgba(238, 130, 238, 0.4)); height: 1400px">
+                <!-- <p style="font-family:'Segoe UI', 'Helvetica Neue', sans-serif; text-align: center; font-size: 50px;">Components</p> -->
+            <div style="display: inline-block; width: 49%;" id="Model1";>
+                <div> 
+                    <img src="stick.jpg" alt="model1" style="width:400px; height: 400px; 
+                        border-radius: 50%; margin-left:25px; margin-top:90px;">
+                    <p  style="background-color: lightgrey;
+                    width: 400px;
+                    border: 2px solid black;
+                    padding: 45px;
+                    margin: 25px;">Buzzer:
+                    A buzzer is an audio signalling device. The buzzer that we are using here is an electromechanical buzzer. The buzzer is connected to the Arduino. If the distance between the person and the obstacle is 0.3m, then Arduino sends the signal generated by the ultrasonic sensor to the buzzer to beep. 
+                    <br><br>
+                    Vibrator:
+                    A vibrator is a mechanical device to generate vibrations. If the distance between the obstacle is less the or equal to 0.3m, then the vibrator generates vibrations. The vibrations generated makes the person aware of the obstacle. 
+                    <br><br>
+                    Thermal sensor:
+                    It detects the temperature of the obstacle. If the temperature detected by the sensor is around 37 degrees then it won’t allow the buzzer to buzz, even if the distance detected is less than 30cm.
+                    
+                    </p>
+                </div>
+            </div>     
+            <div style="display: inline-block; width: 49%; ">
+                    <div style="margin-left: 250px;"> 
+                        <img src="ardunio.jpg" alt="model2" style="width:400px; height: 400px; 
+                            border-radius: 100%; margin-top:90px; position: absolute; top:1830px;">
+                        <p  style="background-color: lightgrey;
+                        width: 450px;
+                        border: 2px solid black;
+                        padding: 45px;
+                        margin: 25px;position: absolute; top: 2350px;">It is a microcontroller board based on the Microchip Atmega328P microcontroller. 
+                        The board is equipped with sets of digital and analog input/output pins that can be interfaced to various expansion boards. </p>
+                    </div>
+                </div>     
+                        <div style="display: block; margin: auto; background-color: black;"> 
+                            <img src="obstacle-sensor.jpg" alt="model3" style="width:400px; height: 300px; 
+                                border-radius: 60%;  margin-top:90px; margin-left: 550px;position: absolute; top:1930px;">
+                            <p  style="background-color: lightgrey;
+                            width: 350px;
+                            border: 2px solid black;
+                            padding: 45px;
+                            margin: 25px; margin-left: 520px; position: absolute; top: 2350px;">Ultrasonic sensor consists of an emitter and a receiver. 
+                            It detects the distance between the obstacle and the user by sending ultrasonic waves. The sensor receives the reflected waves from the obstacle. 
+                            The distance can be calculated with the following formula:
+                            <br>
+                            Distance (L) = (1/2) x T x C<br>
+                            where L is the distance, T is the time between the emission and reception, and C is the speed of sound. 
+                            </p>
+                        </div>
+            </div>
+            <div>  
+            <div class="w3-container" id="contact" style="margin-top:75px;margin-left: 500px; width: 500px;">
+                <h1 class="w3-xxxlarge;" style="color:#333333e7;text-align: center"><b><u>Contact</u></b></h1>
+                <!-- <hr style="width:50px;border:5px solid #333333e7" class="w3-round"> -->
+                <p>Do you want to get in touch? Fill out the form and fill us in with the details :) We love reaching out to new people!</p>
+                <form action="" target="_blank">
+                  <div class="w3-section">
+                    <label>Name</label>
+                    <input class="w3-input w3-border" type="text" name="Name" style="border-radius: 5px" required>
+                  </div>
+                  <div class="w3-section" >
+                    <label>Email</label>
+                    <input class="w3-input w3-border" type="text" name="Email"  style="border-radius: 5px" required>
+                  </div>
+                  <div class="w3-section">
+                    <label>Message</label>
+                    <input class="w3-input w3-border" type="text" name="Message"  style="border-radius: 5px" required>
+                  </div>
+                  <button type="submit" class="w3-button w3-block  w3-padding-large w3-margin-bottom" style="background-color:#333333e7; color:white;border-radius: 5px">Send Message</button>
+                </form>  
+              </div>
+            </div> 
+            
+</body> 
+</html>
